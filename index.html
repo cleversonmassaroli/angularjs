@@ -1,0 +1,57 @@
+<html ng-app="myApp">
+<head>
+	<title>Aula Cinco</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.css">
+	<script src="vendor/angularjs/angular.js"></script>
+	<script>
+		angular.module('myApp', []).controller('meuController', function($scope){
+			$scope.pessoa = [
+				{ 
+					nome:"Massaroli",
+					email : 'meuemaui@cis.com.br'
+				},
+				{
+					nome:"Joao",
+					email : 'Joao@cis.com.br'
+				}
+			];
+
+			//Mostrar
+			$scope.msg = "Isso está visivel";
+
+			//funcaomostrar
+			$scope.mostrarfn = function(){
+				$scope.mostrar = !$scope.mostrar;
+			};
+		});
+
+
+	</script>
+
+
+</head>
+<body ng-controller="meuController">
+	<div class="container">	
+		<div class="row">
+			<h1>Ola <span ng-bind="pessoa[0].nome"></span>, seu email é {{pessoa[0].email}}. </h1>
+			<form id="meuFormulario">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<label>Nome e Sobrenome</label>
+						<input tabindex="1" ng-model="pessoa[0].nome" class="form-control" type="text" placeholder="Insira o nome e Sobrenome" name=""><br>
+					</div>
+					<div class="form-group">
+						<label>E-mail</label>
+						<input tabindex="2" ng-model="pessoa[0].email" class="form-control" type="email"  placeholder="Insira um e-mail" name=""><br>
+
+						<button class="btn btn-primary" ng-click="mostrarfn()">Mostrar/Esconder</button>
+					</div>
+				</div>
+			</form>	
+			<pre ng-if="mostrar">{{msg}}</pre>
+
+		</div>
+	</div>
+</body>
+</html>
